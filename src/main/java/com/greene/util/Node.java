@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.greene.util;
 
 public class Node {
     int value;

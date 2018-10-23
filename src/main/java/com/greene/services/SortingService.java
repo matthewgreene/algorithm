@@ -1,6 +1,6 @@
-package com.example.demo.services;
+package com.greene.services;
 
-import com.example.demo.Node;
+import com.greene.util.Node;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
