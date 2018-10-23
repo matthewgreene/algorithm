@@ -17,11 +17,6 @@ public class sortingController {
     @Autowired
     private SortingService sortingService;
 
-    @GetMapping("/")
-    public String test() {
-        return "index";
-    }
-
     @GetMapping("/bubble/{list}")
     public List<List<Node>> bubbleSort(@PathVariable List<Integer> list) {
         return sortingService.bubbleSortNodes(list);
