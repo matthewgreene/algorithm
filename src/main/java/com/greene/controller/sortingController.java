@@ -3,14 +3,12 @@ package com.greene.controller;
 import com.greene.services.SortingService;
 import com.greene.util.Node;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/sort")
 public class sortingController {
 
@@ -19,11 +17,11 @@ public class sortingController {
 
     @GetMapping("/bubble/{list}")
     public List<List<Node>> bubbleSort(@PathVariable List<Integer> list) {
-        return sortingService.bubbleSortNodes(list);
+        return sortingService.bubbleSort(list);
     }
 
     @GetMapping("/selection/{list}")
     public List<List<Node>> selectionSort(@PathVariable List<Integer> list) {
-        return sortingService.selectionSortNodes(list);
+        return sortingService.selectionSort(list);
     }
 }

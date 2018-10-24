@@ -9,30 +9,12 @@ import java.util.List;
 @Service
 public class SortingService {
 
-    public List<List<Integer>> bubbleSort(List<Integer> unsorted) {
-        boolean isSorted;
-        List<Integer> localList = new ArrayList<>(unsorted);
-        List<List<Integer>> stepsList = new ArrayList<>();
-
-        do {
-            isSorted = true;
-            for (int i=0; i<localList.size()-1; i++) {
-                if (localList.get(i) > localList.get(i+1)) {
-                    isSorted = false;
-                    int tmp = localList.remove(i+1);
-                    localList.add(i, tmp);
-                    stepsList.add(new ArrayList<>(localList));
-                }
-            }
-        } while (!isSorted);
-
-        return stepsList;
-    }
-
-    public List<List<Node>> bubbleSortNodes(List<Integer> unsorted) {
+    public List<List<Node>> bubbleSort(List<Integer> unsorted) {
         boolean isSorted;
         List<Node> nodeList = convertToNodes(unsorted);
         List<List<Node>> steps = new ArrayList<>();
+        steps.add(nodeList);
+        nodeList = copyNodeList(nodeList);
 
         do {
             isSorted = true;
@@ -59,27 +41,11 @@ public class SortingService {
         return steps;
     }
 
-    public List<List<Integer>> selectionSort(List<Integer> unsorted) {
-        List<List<Integer>> steps = new ArrayList<>();
-
-        for (int i=0; i<unsorted.size()-1; i++) {
-            int minIndex = i;
-            for (int j=i+1; j<unsorted.size(); j++) {
-                if (unsorted.get(j) < unsorted.get(minIndex)) {
-                    minIndex = j;
-                }
-            }
-            int tmp = unsorted.remove(minIndex);
-            unsorted.add(i, tmp);
-            steps.add(new ArrayList<>(unsorted));
-        }
-
-        return steps;
-    }
-
-    public List<List<Node>> selectionSortNodes(List<Integer> unsorted) {
+    public List<List<Node>> selectionSort(List<Integer> unsorted) {
         List<Node> nodeList = convertToNodes(unsorted);
         List<List<Node>> steps = new ArrayList<>();
+        steps.add(nodeList);
+        nodeList = copyNodeList(nodeList);
 
         for (int i=0; i<nodeList.size()-1; i++) {
             int minIndex = i;
